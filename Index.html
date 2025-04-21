@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Calcolatore Miscela</title>
+  <style>
+    body { font-family: Arial; padding: 20px; background-color: #f2f2f2; }
+    input, button { margin: 5px; padding: 8px; font-size: 16px; }
+    #risultato { margin-top: 15px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h2>Calcolatore Miscela Olio-Benzina</h2>
+  <label>Litri di benzina:</label><br>
+  <input type="number" id="benzina" step="0.1"><br>
+  
+  <label>Percentuale di olio (%):</label><br>
+  <input type="number" id="percentuale" step="0.1"><br>
+  
+  <button onclick="calcola()">Calcola</button>
+  
+  <div id="risultato"></div>
+
+  <script>
+    function calcola() {
+      const benzina = parseFloat(document.getElementById("benzina").value);
+      const percentuale = parseFloat(document.getElementById("percentuale").value);
+      if (isNaN(benzina) || isNaN(percentuale)) {
+        document.getElementById("risultato").textContent = "Inserisci valori validi!";
+        return;
+      }
+      const olio_ml = benzina * (percentuale / 100) * 1000;
+      document.getElementById("risultato").textContent = `Metti ${olio_ml.toFixed(1)} ml di olio.`;
+    }
+  </script>
+</body>
+</html>
